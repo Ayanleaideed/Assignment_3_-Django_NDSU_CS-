@@ -3,23 +3,27 @@ from django.contrib import messages
 from .models import Course
 from .utils import dataset_to_hashmap
 from datetime import datetime
+import time
 
 
 # Create your views here.
 def courses_view(request):
   # call the process function
   courses = dataset_to_hashmap(Course)
-
   return render(request, 'course_view.html', {'courses': courses})
 
 
 # Function to view more details about a Course
 def course_detail(request, pk):
     try:
+        start_time = time.time()  # Start time before retrieving course details
         # Retrieve the course with the specified pk
         courses = dataset_to_hashmap(Course, pk=pk, OneRecord=True)
-        # Display a success message with the course details
-        messages.success(request, f'Course Details Was Requested...')
+        # Calculate the time taken
+        end_time = time.time()
+        duration = end_time - start_time
+        # Display a success message with the course details and time taken
+        messages.success(request, f'Course Details Was Requested Successfully. Time taken: {duration:.4f} Milliseconds/Seconds.')
         return render(request, 'course_detail.html', {'courses': courses})
     except Course.DoesNotExist:
         # Display a message if the course does not exist
