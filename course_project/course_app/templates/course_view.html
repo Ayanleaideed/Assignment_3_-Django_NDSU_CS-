@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="card-deck">
+    {% for course in courses %}
+    <div class="card">
+      <div class="card-header">
+        <h5>{{ course.course_code }} - {{ course.title }}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ course.title }}</p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

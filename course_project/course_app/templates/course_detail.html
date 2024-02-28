@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if courses %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div id="form_div" class="card">
+        <div class="card-header text-center">
+          <h3>Course Information</h3>
+          <strong>Course Title: {{ courses.title }}</strong>
+        </div>
+        <form method="post">
+          <a href="{% url 'courses_view' %}" id="alink" class="btn btn-primary mt-2 pl-3 pr-3">Back</a>
+          {% csrf_token %}
+          <ul class="list-group list-group-flush">
+            {% for header, value in courses.items %}
+            {% if header != 'description' %}
+            <div class="form-group">
+              <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"><strong>{{ header }}</strong></span>
+                </div>
+                <input name="{{ header }}" type="text" class="form-control" aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm" disabled value="{{ value }}">
+              </div>
+            </div>
+            {% else %}
+            <div class="form-group">
+              <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"><strong>{{ header }}</strong></span>
+                </div>
+                <textarea name="{{ header }}" class="form-control" rows="3"
+                  disabled>{{ value | truncatechars:400 }}</textarea>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="card-header text-center">
+  <h3>NO Course Was Found</h3>
+</div>
+{% endif %}
+
+{% endblock %}
