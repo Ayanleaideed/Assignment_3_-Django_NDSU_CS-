@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if course %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div id="form_div" class="card">
+        <div class="card-header text-center">
+          <h3>Course Edit Information</h3>
+          <strong>Course Title: {{ course.title }}</strong>
+        </div>
+        <form action="{% url 'edit_course' course.id %}" method="post">
+            <a href="{% url 'courses_view' %}" id="alink" class="btn btn-primary mt-2 pl-3 pr-3">Back</a>
+            {% csrf_token %}
+            <ul class="list-group list-group-flush">
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Title</strong></span>
+                  </div>
+                  <input name="title" type="text" class="form-control" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.Title }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Description</strong></span>
+                  </div>
+                  <textarea name="description" class="form-control" rows="3">{{ course_details.Description }}</textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Credits</strong></span>
+                  </div>
+                  <input name="credits" type="text" class="form-control" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.Credits }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Instructor</strong></span>
+                  </div>
+                  <input name="instructor" type="text" class="form-control" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.Instructor }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Start Date</strong></span>
+                    </div>    
+                    <input name="start_date" type="date" class="form-control" aria-label="Small"
+                        aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.StartDate}}">
+                </div>
+            </div>
+            
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Prerequisites</strong></span>
+                  </div>
+                  <textarea name="prerequisites" class="form-control" rows="3">{{ course_details.Prerequisites }}</textarea>
+                </div>
+              </div>
+            </ul>
+            <button type="submit" class="btn btn-primary mt-2 pl-3 pr-3">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="card-header text-center">
+  <h3>NO Course Was Found</h3>
+</div>
+{% endif %}
+
+{% endblock %}

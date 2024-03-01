@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Course
 from .utils import dataset_to_hashmap
@@ -64,7 +64,39 @@ def create_course(request):
     return render(request, 'create_course.html')
 
 
+def edit_course(request, pk):
+    try:
+        # Retrieve the course with the specified pk
+        course = Course.objects.get(pk=pk)
 
+        if request.method == 'POST':
+            # Update the course with the data submitted in the form
+            course.title = request.POST.get('title', '')
+            course.description = request.POST.get('description', '')
+            course.credits = int(request.POST.get('credits', ''))
+            course.instructor = request.POST.get('instructor', '')
+            course.start_date = request.POST.get('start_date', '')
+            course.prerequisites = request.POST.get('prerequisites', '')
+            course.save()
+            messages.success(request, f'Course "{course.title}" has been successfully updated.')
+            return redirect('courses_view')
+        else:
+            # Create a dictionary to store course details
+            course_details = {
+                'Title': course.title,
+                'Description': course.description,
+                'Credits': course.credits,
+                'Instructor': course.instructor,
+                'StartDate': course.start_date,
+                'Prerequisites': course.prerequisites,
+            }
+
+        # Render the template with the course details
+        return render(request, 'edit_course.html', {'course': course, 'course_details': course_details})
+    
+    except Course.DoesNotExist:
+        messages.error(request, f"Course with ID {course_detail.get('Title')} does not exist.")
+        return redirect('courses_view')
 
 
 

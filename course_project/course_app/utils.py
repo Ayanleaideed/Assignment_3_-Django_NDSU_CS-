@@ -15,6 +15,7 @@ def dataset_to_hashmap(dataset, pk=None, OneRecord=False):
         course = dataset.objects.get(id=pk)
 
         course_data = {
+            'id': course.id,
             'course_code': course.course_code,
             'title': course.title,
             'description': course.description,

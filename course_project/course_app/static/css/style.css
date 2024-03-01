@@ -46,17 +46,18 @@ body {
 
 
 .card-header {
-  background-color: hsl(210, 100%, 50%);
-  color: white;
-  box-shadow: 0 6px 8px 0 hsla(0, 0%, 0%, 0.2), 0 6px 20px 0 hsla(0, 0%, 0%, 0.19);
-  border-radius: 10px 10px 0 0;
-  padding: 10px;
-  border: none;
-  margin-bottom: -1px;
-  width: 100%;
-}
-
-
-.container {
-  max-width: 80%;
-}
+    background-color: hsl(210, 100%, 50%);
+    color: white;
+    box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2), 0 2px 4px hsla(0, 0%, 0%, 0.1);
+    border-radius: 10px 10px 0 0;
+    padding: 15px; 
+    border: none;
+    width: 100%;
+    margin-bottom: 0; 
+  }
+  
+  .container {
+    max-width: 90%; 
+    margin: 0 auto; 
+  }
+  
