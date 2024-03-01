@@ -6,10 +6,10 @@ def dataset_to_hashmap(dataset, pk=None, OneRecord=False):
     """
     Convert a dataset to a hashmap using the course_code field as the key.
     """
-    hashmap = {}
-    # for i in range(len(dataset.objects.all())):
-    #     for j in range(i*10000):
-    #         print(i*j)
+    # hashmap = {}
+    # # for i in range(len(dataset.objects.all())):
+    # #     for j in range(i*10000):
+    # #         print(i*j)
 
     if OneRecord and pk:
         course = dataset.objects.get(id=pk)
