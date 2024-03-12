@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{% url 'courses_view' %}">
       <h4 style="font-family: sans-serif; font-weight: bold;">NDSU Computer Science</h4>
     </a>
@@ -31,7 +31,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <h6><strong><a class="nav-link" href="{% url 'create_course' %}"
                 style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
@@ -42,25 +42,26 @@
                 style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
                   class="fas fa-plus"></i>Admin Site</a></strong></h6>
         </li>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <h6><strong><a class="nav-link" href="https://www.ndsu.edu/cs/"
-                style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
-                  class="fas fa-plus"></i>About</a></strong></h6>
-        </li>
-        <li class="nav-item">
-          <h6><strong><a class="nav-link"
-                href="https://catalog.ndsu.edu/undergraduate/program-curriculum/computer-science/"
-                style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
-                  class="fas fa-plus"></i>Course At NDSU</a></strong></h6>
-        </li>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <h6><strong><a class="nav-link" href="https://www.ndsu.edu/cs/"
+                  style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
+                    class="fas fa-plus"></i>About</a></strong></h6>
+          </li>
+          <li class="nav-item">
+            <h6><strong><a class="nav-link"
+                  href="https://catalog.ndsu.edu/undergraduate/program-curriculum/computer-science/"
+                  style="color: white; padding: 10px; border-bottom: 2px solid transparent; transition: border-color 0.3s;"><i
+                    class="fas fa-plus"></i>Course At NDSU</a></strong></h6>
+          </li>
     </div>
   </nav>
 
   {% if messages %}
   {% for message in messages %}
   <div class="alert alert-warning alert-dismissible fade show d-flex justify-content-center"
-    style="text-align: center; padding: 20px; text-transform: capitalize;" role="alert">
+    style="text-align: center; padding: 20px; text-transform: capitalize; background-color: hsla(60, 83%, 52%, 0.728); color: black; font-size: large;"
+    role="alert">
     <strong>{{ message.tags }}:</strong> {{ message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="align-self: center;">
       <span aria-hidden="true">&times;</span>
@@ -82,13 +83,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-    <footer class="footer">
-      <div class="container">
-          <p>&copy; 2024 Ayanle Aideed</p>
-      </div>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Ayanle Aideed</p>
+    </div>
   </footer>
-  
-  
+
+
 </body>
 
 </html>
