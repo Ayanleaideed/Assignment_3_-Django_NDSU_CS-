@@ -43,3 +43,15 @@ def dataset_to_hashmap(dataset, pk=None, OneRecord=False):
             # hashmap['id'] = course_data.id
 
     return course_data
+
+
+
+class CourseData:
+    def __init__(self, course_instance):
+        self.course_code = course_instance.course_code
+        self.title = course_instance.title
+        self.description = course_instance.description
+        self.credits = course_instance.credits
+        self.instructor = course_instance.instructor
+        self.start_date = course_instance.start_date
+        self.prerequisites = course_instance.prerequisites

@@ -93,7 +93,7 @@ def edit_course(request, pk):
 
         # Render the template with the course details
         return render(request, 'edit_course.html', {'course': course, 'course_details': course_details})
-    
+
     except Course.DoesNotExist:
         messages.error(request, f"Course with ID {course_detail.get('Title')} does not exist.")
         return redirect('courses_view')
