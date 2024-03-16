@@ -2,19 +2,25 @@
 
 {% block content %}
 <div class="container">
-  <div class="card-deck">
+  <div class="row">
     {% for course in courses %}
-    <div class="card">
-      <div class="card-header">
-        <h5>{{ course.course_code }} - {{ course.title }}</h5>
-      </div>
-      <div class="card-body">
-        <p class="card-text">{{ course.title }}</p>
-      </div>
-      <div class="card-footer">
-        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Read More</a>
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h5>{{ course.course_code }} - {{ course.title }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ course.title }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Read More</a>
+        </div>
       </div>
     </div>
+    {% if forloop.counter|divisibleby:4 and not forloop.last %}
+  </div>
+  <div class="row">
+    {% endif %}
     {% endfor %}
   </div>
 </div>

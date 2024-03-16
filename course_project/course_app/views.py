@@ -72,6 +72,7 @@ def edit_course(request, pk):
         if request.method == 'POST':
             # Update the course with the data submitted in the form
             course.title = request.POST.get('title', '')
+            course.course_code = request.POST.get('course_code', 'N/A')
             course.description = request.POST.get('description', '')
             course.credits = int(request.POST.get('credits', ''))
             course.instructor = request.POST.get('instructor', '')
@@ -83,6 +84,8 @@ def edit_course(request, pk):
         else:
             # Create a dictionary to store course details
             course_details = {
+                'id': course.id,
+                "course_code": course.course_code,
                 'Title': course.title,
                 'Description': course.description,
                 'Credits': course.credits,

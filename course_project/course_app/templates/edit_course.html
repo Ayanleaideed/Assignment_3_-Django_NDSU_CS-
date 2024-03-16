@@ -15,6 +15,15 @@
             <a href="{% url 'courses_view' %}" id="alink" class="btn btn-primary mt-2 pl-3 pr-3">Back</a>
             {% csrf_token %}
             <ul class="list-group list-group-flush">
+            <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Course ID</strong></span>
+                  </div>
+                  <input name="id" type="text" class="form-control" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" disabled required value="{{ course_details.id }}">
+                </div>
+              </div>
               <div class="form-group">
                 <div class="input-group input-group-sm">
                   <div class="input-group-prepend">
@@ -22,6 +31,15 @@
                   </div>
                   <input name="title" type="text" class="form-control" aria-label="Small"
                     aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.Title }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Course Code</strong></span>
+                  </div>
+                  <input name="course_code" type="text" class="form-control" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.course_code }}">
                 </div>
               </div>
               <div class="form-group">
@@ -54,12 +72,12 @@
                 <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm"><strong>Start Date</strong></span>
-                    </div>    
+                    </div>
                     <input name="start_date" type="date" class="form-control" aria-label="Small"
                         aria-describedby="inputGroup-sizing-sm" required value="{{ course_details.StartDate}}">
                 </div>
             </div>
-            
+
               <div class="form-group">
                 <div class="input-group input-group-sm">
                   <div class="input-group-prepend">
